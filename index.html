@@ -520,7 +520,7 @@
       border: 1px solid rgba(255, 255, 255, 0.2);
       border-radius: 999px;
       padding: 5px 12px;
-      display: none !important;
+      display: flex;
       gap: 6px;
       z-index: 9999;
       backdrop-filter: blur(8px);
@@ -998,53 +998,155 @@
       letter-spacing: 0.05em;
     }
 
-    /* 置物櫃密碼提示膠囊 */
-    .locker-code-badge {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      background: linear-gradient(135deg, rgba(255, 214, 10, 0.14) 0%, rgba(255, 149, 0, 0.08) 100%);
+    /* ==========================================================
+       置物櫃專屬取件資訊卡 (Locker Information Card)
+       ========================================================== */
+    .locker-card {
+      width: 100%;
+      max-width: 330px;
+      background: linear-gradient(145deg, rgba(255, 255, 255, 0.07) 0%, rgba(255, 255, 255, 0.02) 100%);
       border: 1px solid rgba(255, 214, 10, 0.4);
-      border-radius: 12px;
-      padding: 10px 18px;
-      margin-bottom: 20px;
-      max-width: 320px;
-      backdrop-filter: blur(10px);
-      box-shadow: 0 4px 20px rgba(255, 214, 10, 0.12);
-      animation: locker-code-glow 3s infinite ease-in-out;
+      border-radius: 18px;
+      padding: 18px 20px;
+      margin: 0 auto 22px auto;
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 0 0 20px rgba(255, 214, 10, 0.12);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      animation: locker-card-glow 3.5s infinite ease-in-out;
     }
 
-    @keyframes locker-code-glow {
-
-      0%,
-      100% {
-        box-shadow: 0 4px 18px rgba(255, 214, 10, 0.12);
+    @keyframes locker-card-glow {
+      0%, 100% {
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 0 0 18px rgba(255, 214, 10, 0.12);
         border-color: rgba(255, 214, 10, 0.35);
       }
-
       50% {
-        box-shadow: 0 6px 26px rgba(255, 214, 10, 0.28);
-        border-color: rgba(255, 214, 10, 0.65);
+        box-shadow: 0 12px 36px rgba(0, 0, 0, 0.6), 0 0 32px rgba(255, 214, 10, 0.3);
+        border-color: rgba(255, 214, 10, 0.7);
       }
     }
 
-    .locker-code-icon {
-      width: 18px;
-      height: 18px;
+    .locker-card-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 14px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .locker-card-tag {
+      font-size: 0.78rem;
+      letter-spacing: 0.1em;
+      color: #ffd60a;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .locker-card-tag svg {
+      width: 15px;
+      height: 15px;
       stroke: #ffd60a;
       fill: none;
       stroke-width: 2;
       stroke-linecap: round;
       stroke-linejoin: round;
-      flex-shrink: 0;
     }
 
-    .locker-code-text {
-      font-size: 0.92rem;
-      font-weight: 600;
+    .locker-card-door {
+      font-size: 0.88rem;
+      font-weight: 700;
+      color: #ffffff;
+      background: rgba(255, 255, 255, 0.12);
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      padding: 3px 12px;
+      border-radius: 999px;
+      letter-spacing: 0.05em;
+    }
+
+    .locker-passcode-box {
+      background: rgba(0, 0, 0, 0.55);
+      border: 1.5px solid rgba(255, 214, 10, 0.45);
+      border-radius: 14px;
+      padding: 12px 14px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      margin-bottom: 12px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .locker-passcode-box:hover {
+      border-color: rgba(255, 214, 10, 0.8);
+      background: rgba(255, 214, 10, 0.08);
+    }
+
+    .locker-passcode-box:active {
+      transform: scale(0.98);
+      background: rgba(255, 214, 10, 0.15);
+    }
+
+    .locker-code-info {
+      text-align: left;
+    }
+
+    .locker-code-title {
+      font-size: 0.72rem;
+      color: #a0a0a5;
+      letter-spacing: 0.05em;
+      margin-bottom: 4px;
+    }
+
+    .locker-code-digits {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: 1.85rem;
+      font-weight: 800;
+      letter-spacing: 0.16em;
       color: #ffd60a;
+      line-height: 1.1;
+      text-shadow: 0 0 16px rgba(255, 214, 10, 0.5);
+    }
+
+    .locker-copy-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: #000000;
+      background: #ffd60a;
+      border: none;
+      padding: 8px 14px;
+      border-radius: 8px;
+      cursor: pointer;
+      flex-shrink: 0;
+      box-shadow: 0 2px 12px rgba(255, 214, 10, 0.35);
+      transition: all 0.2s ease;
+    }
+
+    .locker-copy-btn:active {
+      transform: scale(0.92);
+    }
+
+    .locker-copy-btn.copied {
+      background: #34c759;
+      color: #ffffff;
+      box-shadow: 0 2px 12px rgba(52, 199, 89, 0.45);
+    }
+
+    .locker-card-sub {
+      font-size: 0.78rem;
+      color: #9e9ea7;
       letter-spacing: 0.03em;
+      line-height: 1.5;
+      margin: 0;
     }
   </style>
 </head>
@@ -1087,7 +1189,7 @@
          ========================================================== -->
     <section class="stage" id="stage-passcode" aria-label="密碼解鎖">
       <span class="badge">SECURITY CHECK</span>
-      <h1 class="title">開始猜密碼</h1>
+      <h1 class="title">輸入通關密碼</h1>
       <p class="description">請輸入 4 位數密碼以開啟驚喜任務</p>
 
       <!-- 密碼顯示欄位 (4 格) -->
@@ -1141,16 +1243,39 @@
       <span class="badge">MISSION 01</span>
       <h1 class="title">神秘任務 1</h1>
       <p class="description">
-        去南勢角捷運站的<span class="highlight-number" id="locker-number-display">02門</span>置物櫃拿東西
+        去南勢角捷運站的<span class="highlight-number" id="locker-number-display">03門</span>置物櫃拿東西
       </p>
 
-      <!-- 置物櫃密碼提示 -->
-      <div class="locker-code-badge">
-        <svg viewBox="0 0 24 24" class="locker-code-icon">
-          <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
-          <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
-        </svg>
-        <span class="locker-code-text">置物櫃密碼就是你剛剛輸入的密碼</span>
+      <!-- 置物櫃取件資訊卡 (包含自動生成的開櫃密碼) -->
+      <div class="locker-card">
+        <div class="locker-card-header">
+          <div class="locker-card-tag">
+            <svg viewBox="0 0 24 24">
+              <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+              <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+            </svg>
+            <span>置物櫃取件資訊</span>
+          </div>
+          <span class="locker-card-door" id="locker-door-badge">🚪 03門</span>
+        </div>
+
+        <div class="locker-passcode-box" onclick="copyLockerCode()" title="點擊複製開櫃密碼">
+          <div class="locker-code-info">
+            <div class="locker-code-title">保險櫃專屬開櫃密碼</div>
+            <div class="locker-code-digits" id="locker-passcode-display">957685</div>
+          </div>
+          <button type="button" class="locker-copy-btn" id="locker-copy-btn" aria-label="複製開櫃密碼">
+            <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+              <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+            </svg>
+            <span id="locker-copy-text">複製</span>
+          </button>
+        </div>
+
+        <p class="locker-card-sub">
+          💡 請在置物櫃螢幕點選「取件」，輸入上方 6 位數密碼
+        </p>
       </div>
 
       <p class="hint">領完請上傳照片</p>
@@ -1300,6 +1425,15 @@
     <span id="toast-text">上傳成功，進入下一關...</span>
   </div>
 
+  <!-- 測試快速切換懸浮列 (可在下方 CONFIG.ENABLE_DEBUG_TOOLBAR 關閉) -->
+  <div id="debug-toolbar">
+    <button class="debug-btn" onclick="goToStage(0)">第0關:倒數</button>
+    <button class="debug-btn" onclick="goToStage(1)">第1關:密碼</button>
+    <button class="debug-btn" onclick="goToStage(2)">第2關:任務1</button>
+    <button class="debug-btn" onclick="goToStage(3)">第3關:任務2</button>
+    <button class="debug-btn" onclick="goToStage(4)">第4關:影片</button>
+    <button class="debug-btn" onclick="goToStage(5)">第5關:最終</button>
+  </div>
 
   <!-- ==========================================================
        8. 原生 JavaScript 邏輯
@@ -1313,13 +1447,16 @@
     const CONFIG = {
       // 1. 目標倒數時間：10 月 23 日 中午 12:00
       // 註：Date 構造參數中，月份是從 0 起算（9 代表 10 月）
-      TARGET_DATE: new Date(2026, 9, 24, 17, 0, 0),
+      TARGET_DATE: new Date(2026, 9, 23, 12, 0, 0),
 
       // 2. 解鎖密碼設定（4 位數字）
       PASSCODE: "0107",
 
       // 3. 南勢角捷運站置物櫃號碼（請替換為實際櫃位號碼）
-      LOCKER_NUMBER: "02門",
+      LOCKER_NUMBER: "03門",
+
+      // 4. 置物櫃自動生成的開箱密碼（6 位數字）
+      LOCKER_PASSCODE: "957685",
 
       // 4. 驚喜影片路徑或 URL（可填相對路徑如 "./surprise.mp4" 或外部影片連結）
       VIDEO_SOURCE: "./surprise.mp4",
@@ -1333,10 +1470,10 @@
 
       // 7. 最終頁面文字設定
       FINAL_TITLE: "🎉 恭喜通關！",
-      FINAL_DESCRIPTION: "你已經順利完成所有任務！即將揭曉最後的驚喜。",
+      FINAL_DESCRIPTION: "你已經順利解開所有任務！即將揭開最後的專屬驚喜。",
 
-      // 8. 快速測試導航列（已移除關閉）
-      ENABLE_DEBUG_TOOLBAR: false
+      // 8. 是否啟用底部「快速測試導航列」（true: 顯示便於您先行檢視各關卡；上線前可改為 false 隱藏）
+      ENABLE_DEBUG_TOOLBAR: true
     };
 
     /**
@@ -1525,7 +1662,7 @@
       if (enteredPasscode === CONFIG.PASSCODE) {
         // 密碼正確！
         if (displayContainer) displayContainer.classList.add('success');
-        showUploadFeedback('🎉 密碼正確！解鎖神秘任務', () => {
+        showUploadFeedback('🎉 密碼正確！解鎖 03 門開櫃資訊', () => {
           if (displayContainer) displayContainer.classList.remove('success');
           enteredPasscode = '';
           updatePasscodeDisplay();
@@ -1797,6 +1934,35 @@
     }
 
     /**
+     * 複製置物櫃專屬開櫃密碼 (957685)
+     */
+    function copyLockerCode() {
+      const code = CONFIG.LOCKER_PASSCODE || "957685";
+      const copyBtn = document.getElementById('locker-copy-btn');
+      const copyText = document.getElementById('locker-copy-text');
+
+      function onCopied() {
+        if (copyBtn) copyBtn.classList.add('copied');
+        if (copyText) copyText.textContent = '已複製';
+        showUploadFeedback(`📋 開櫃密碼 ${code} 已複製！`, null);
+        setTimeout(() => {
+          if (copyBtn) copyBtn.classList.remove('copied');
+          if (copyText) copyText.textContent = '複製';
+        }, 2200);
+      }
+
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(code)
+          .then(onCopied)
+          .catch(() => {
+            fallbackCopy(code, copyBtn, copyText);
+          });
+      } else {
+        fallbackCopy(code, copyBtn, copyText);
+      }
+    }
+
+    /**
      * 複製外部驚喜連結（含剪貼簿支援與手機相容降級）
      */
     function handleCopyLink() {
@@ -1872,9 +2038,15 @@
      * =================================================================
      */
     window.addEventListener('DOMContentLoaded', () => {
-      // 1. 注入置物櫃號碼
+      // 1. 注入置物櫃號碼與開櫃密碼
       const lockerEl = document.getElementById('locker-number-display');
       if (lockerEl) lockerEl.textContent = CONFIG.LOCKER_NUMBER;
+
+      const doorBadgeEl = document.getElementById('locker-door-badge');
+      if (doorBadgeEl) doorBadgeEl.textContent = `🚪 ${CONFIG.LOCKER_NUMBER}`;
+
+      const lockerPasscodeEl = document.getElementById('locker-passcode-display');
+      if (lockerPasscodeEl) lockerPasscodeEl.textContent = CONFIG.LOCKER_PASSCODE;
 
       // 2. 注入最終頁面資訊與外部連結
       const finalTitleEl = document.getElementById('final-title');
