@@ -520,7 +520,7 @@
       border: 1px solid rgba(255, 255, 255, 0.2);
       border-radius: 999px;
       padding: 5px 12px;
-      display: flex;
+      display: none !important;
       gap: 6px;
       z-index: 9999;
       backdrop-filter: blur(8px);
@@ -1425,15 +1425,6 @@
     <span id="toast-text">上傳成功，進入下一關...</span>
   </div>
 
-  <!-- 測試快速切換懸浮列 (可在下方 CONFIG.ENABLE_DEBUG_TOOLBAR 關閉) -->
-  <div id="debug-toolbar">
-    <button class="debug-btn" onclick="goToStage(0)">第0關:倒數</button>
-    <button class="debug-btn" onclick="goToStage(1)">第1關:密碼</button>
-    <button class="debug-btn" onclick="goToStage(2)">第2關:任務1</button>
-    <button class="debug-btn" onclick="goToStage(3)">第3關:任務2</button>
-    <button class="debug-btn" onclick="goToStage(4)">第4關:影片</button>
-    <button class="debug-btn" onclick="goToStage(5)">第5關:最終</button>
-  </div>
 
   <!-- ==========================================================
        8. 原生 JavaScript 邏輯
@@ -1472,8 +1463,8 @@
       FINAL_TITLE: "🎉 恭喜通關！",
       FINAL_DESCRIPTION: "你已經順利解開所有任務！即將揭開最後的專屬驚喜。",
 
-      // 8. 是否啟用底部「快速測試導航列」（true: 顯示便於您先行檢視各關卡；上線前可改為 false 隱藏）
-      ENABLE_DEBUG_TOOLBAR: true
+      // 8. 快速測試導航列（已徹底關閉）
+      ENABLE_DEBUG_TOOLBAR: false
     };
 
     /**
